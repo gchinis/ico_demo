@@ -1,8 +1,6 @@
 pragma solidity ^0.4.4;
 
-import './IERC20.sol';
-
-contract TestCoin is IERC20 {
+contract TestCoin {
 
   //declare how many tokens will be in circulation
   uint public constant _totalSupply = 1000000000;
@@ -20,7 +18,7 @@ contract TestCoin is IERC20 {
   mapping(address => uint265) balances;
 
   //declare a mapping of permissions for spending
-  mapping(address => (mapping(address => uint256)) allowed;
+  mapping(address => mapping(address => uint256)) allowed;
 
   //constructor
   function TestCoin() {
@@ -40,7 +38,7 @@ contract TestCoin is IERC20 {
     //check if amount exists in account
     require(
       balances[msg.sender] >= _value
-      && _value > 0;
+      && _value > 0
       );
     //subtract amount from msg.sender
     balances[msg.sender] -= _value;
@@ -59,8 +57,8 @@ contract TestCoin is IERC20 {
       //is the balance of from greater than value?
       && balances[_from] >= _value
       //is the value greater than 0
-      && _value > 0;
-      )
+      && _value > 0
+      );
 
       //transfer the balances between accounts
       balances[_from] -= _value;
